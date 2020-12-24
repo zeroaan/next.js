@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { KeyboardArrowUpRounded, KeyboardArrowDownRounded } from "@material-ui/icons";
 import styles from "./CountriesTable.module.css";
 
@@ -73,11 +74,13 @@ const CountriesTable = ({ countries }) => {
       </div>
 
       {orderCountries.map((country) => (
-        <div className={styles.row}>
-          <div className={styles.name}>{country.name}</div>
+        <Link href={`/country/${country.alpha3Code}`}>
+          <div className={styles.row}>
+            <div className={styles.name}>{country.name}</div>
 
-          <div className={styles.population}>{country.population}</div>
-        </div>
+            <div className={styles.population}>{country.population}</div>
+          </div>
+        </Link>
       ))}
     </div>
   );
